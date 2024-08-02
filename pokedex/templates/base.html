@@ -24,15 +24,19 @@
                             </li>
                             {% if user.is_authenticated %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href=" {% url "pokedex:add_pokemon" %} ">Nuevo Pokemon</a>
+                                    <a class="nav-link" href=" {% url 'pokedex:add_pokemon' %} ">Nuevo Pokemon</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url "logout" %}">Logout</a>
+                                    <a class="nav-link" href=" {% url 'pokedex:add_trainer' %} ">Nuevo Entrenador</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                                 </li>
                                 {% else %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{% url "pokedex:login" %}">Login</a> 
+                                    <a class="nav-link" href="{% url 'pokedex:login' %}">Login</a> 
                                 </li>
                             {% endif %}
                         </ul>
