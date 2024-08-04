@@ -8,10 +8,10 @@ from django.contrib.auth.decorators import login_required
 from pokedex.forms import PokemonForm,TrainerForm
 from .models import Pokemon,Trainer
 
-#def index(request):
-    #pokemons = Pokemon.objects.order_by('type')
-    #template = loader.get_template('index.html')
-    #return HttpResponse(template.render({'pokemons': pokemons}, request))
+def index(request):
+    pokemons = Pokemon.objects.order_by('type')
+    template = loader.get_template('index.html')
+    return HttpResponse(template.render({'pokemons': pokemons}, request))
     
 
 def pokemon(request, pokemon_id):
@@ -57,16 +57,9 @@ def delete_pokemon(request, id):
 
 
 
-def index(request):
-    pokemons = Pokemon.objects.order_by('type')
-    trainers = Trainer.objects.order_by('first_name')
-    template = loader.get_template('index.html')
-    context = {
-        'pokemons': pokemons,
-        'trainers': trainers
-    }
-    return HttpResponse(template.render(context, request))
-
+def trainers_list(request):
+    trainers = Trainer.objects.all()
+    return render (request, 'trainers_list.html', {'trainers': trainers})
 
 def trainer(request, trainer_id):
     trainer = get_object_or_404(Trainer, pk=trainer_id)
